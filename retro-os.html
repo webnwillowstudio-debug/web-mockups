@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" data-vars="--desk,--win,--title,--hi,--ink">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PIXEL POST — a 90s desktop portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=VT323&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--desk:#2A8C8C;--win:#C9C6BE;--title:#1F2E9E;--hi:#FF5FA2;--ink:#111;--px:'VT323',monospace;--mono:'Space Mono',monospace}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scrollbar-width:none}html::-webkit-scrollbar{display:none}
+body{background:var(--desk);font-family:var(--mono);color:var(--ink);min-height:100vh;overflow-x:hidden;
+ background-image:radial-gradient(rgba(255,255,255,.12) 1px,transparent 1px);background-size:16px 16px}
+a{color:inherit}
+.bar{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;background:var(--win);border-bottom:3px solid var(--ink);padding:6px 14px;font-family:var(--px);font-size:22px}
+.bar .logo{display:flex;gap:8px;align-items:center;cursor:pointer}
+.bar .logo i{width:18px;height:18px;background:conic-gradient(var(--hi) 0 25%,#FFD23F 0 50%,#3DDC97 0 75%,var(--title) 0);display:block;border:2px solid var(--ink)}
+.bar nav{display:flex;gap:22px}
+.desk{position:relative;min-height:1900px;width:min(1400px,100%);margin:0 auto}
+.icon{position:absolute;width:96px;text-align:center;font-family:var(--px);font-size:20px;color:#fff;cursor:pointer;user-select:none}
+.icon .g{width:60px;height:54px;margin:0 auto 6px;image-rendering:pixelated}
+.icon span{background:var(--title);padding:0 4px}
+.win{position:absolute;background:var(--win);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink),inset -3px -3px 0 #8d8a83,inset 3px 3px 0 #fff;min-width:240px;transition:box-shadow .2s}
+.win.drag{box-shadow:12px 12px 0 var(--ink)}
+.tb{display:flex;justify-content:space-between;align-items:center;background:var(--title);color:#fff;font-family:var(--px);font-size:22px;padding:2px 6px 2px 10px;cursor:grab;touch-action:none}
+.tb .b{display:flex;gap:4px}.tb .b i{width:20px;height:18px;background:var(--win);border:2px solid var(--ink);display:block}
+.wb{padding:16px;background:#fff;margin:6px;border:2px solid #8d8a83}
+h1{font-family:var(--px);font-weight:400;font-size:clamp(64px,9vw,140px);line-height:.85;color:var(--title)}
+h1 em{font-style:normal;color:var(--hi)}
+.caret{display:inline-block;width:.45em;height:.8em;background:var(--hi);animation:b 1s steps(1) infinite;vertical-align:-.05em}
+@keyframes b{50%{opacity:0}}
+p{font-size:14px;line-height:1.6}
+.btn{display:inline-block;font-family:var(--px);font-size:22px;padding:4px 18px;background:var(--win);border:3px solid var(--ink);box-shadow:inset -3px -3px 0 #8d8a83,inset 3px 3px 0 #fff;text-decoration:none;cursor:pointer}
+.btn:active{box-shadow:inset 3px 3px 0 #8d8a83}
+.folder{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.folder .f{text-align:center;font-family:var(--px);font-size:19px}
+.ph{aspect-ratio:4/3;background:linear-gradient(135deg,var(--hi),#FFD23F);border:2px solid var(--ink);position:relative;background-size:cover;background-position:center;margin-bottom:4px}
+.ph:not(.has-img)::after{content:"";position:absolute;inset:22% 30%;background:#fff;border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
+.ph.b2{background:linear-gradient(135deg,#3DDC97,var(--title))}.ph.b3{background:linear-gradient(135deg,#FFD23F,#FF7A3D)}
+.player{width:300px}
+.player .scr{background:#0b0b0b;color:#3DDC97;font-family:var(--px);font-size:24px;padding:10px;overflow:hidden;white-space:nowrap}
+.player .scr span{display:inline-block;animation:mq 9s linear infinite}
+@keyframes mq{from{transform:translateX(100%)}to{transform:translateX(-100%)}}
+.eq{display:flex;align-items:flex-end;gap:3px;height:56px;background:#0b0b0b;padding:6px 10px}
+.eq i{flex:1;background:linear-gradient(#FF5FA2,#FFD23F,#3DDC97);animation:eq .6s ease-in-out infinite alternate}
+@keyframes eq{from{height:15%}to{height:100%}}
+.ctrls{display:flex;gap:6px;padding:8px}
+.guest li{list-style:none;padding:8px 0;border-bottom:2px dotted #aaa;font-size:13px}
+.guest b{color:var(--title)}
+.marq{background:var(--hi);color:#fff;font-family:var(--px);font-size:30px;border-block:3px solid var(--ink);overflow:hidden;white-space:nowrap;padding:4px 0}
+.marq span{display:inline-block;animation:mq 16s linear infinite}
+.task{position:sticky;bottom:0;z-index:100;display:flex;gap:8px;align-items:center;background:var(--win);border-top:3px solid var(--ink);padding:6px 10px;font-family:var(--px);font-size:20px}
+.task .start{font-weight:700}
+.task .clock{margin-left:auto;padding:0 10px;box-shadow:inset 2px 2px 0 #8d8a83,inset -2px -2px 0 #fff}
+.stk{position:absolute;font-family:var(--px);font-size:26px;background:#FFD23F;border:3px solid var(--ink);padding:6px 14px;transform:rotate(-8deg);box-shadow:4px 4px 0 var(--ink);animation:wob 3s ease-in-out infinite}
+@keyframes wob{50%{transform:rotate(6deg) scale(1.06)}}
+.win{opacity:0;transform:scale(.6);transition:opacity .4s,transform .5s cubic-bezier(.2,1.6,.4,1)}
+.win.in{opacity:1;transform:none}
+@media(max-width:1000px){.desk{min-height:auto;display:flex;flex-direction:column;gap:26px;padding:24px}.win,.icon,.stk{position:relative!important;left:auto!important;top:auto!important;width:auto!important}.icons{display:flex;gap:10px}.player{width:auto}}
+</style>
+</head>
+<body>
+<div class="bar"><div class="logo"><i></i> PIXEL POST</div><nav><a href="#">File</a><a href="#">Edit</a><a href="#">View</a><a href="#">Help</a></nav></div>
+<div class="marq"><span>★ WELCOME TO PIXEL POST ★ A DESIGN STUDIO THAT STILL LOVES 1997 ★ WEBSITES ★ APPS ★ BRANDS ★ SIGN THE GUESTBOOK ★</span></div>
+
+<main class="desk" id="desk">
+  <div class="icons">
+  <div class="icon" style="left:30px;top:40px"><svg class="g" viewBox="0 0 30 27"><path d="M1 4h11l3 3h14v19H1z" fill="#FFD23F" stroke="#111" stroke-width="2"/></svg><span>Projects</span></div>
+  <div class="icon" style="left:30px;top:160px"><svg class="g" viewBox="0 0 30 27"><rect x="4" y="1" width="22" height="25" fill="#fff" stroke="#111" stroke-width="2"/><path d="M8 8h14M8 13h14M8 18h9" stroke="#111" stroke-width="2"/></svg><span>about.txt</span></div>
+  <div class="icon" style="left:30px;top:280px"><svg class="g" viewBox="0 0 30 27"><circle cx="15" cy="14" r="12" fill="#FF5FA2" stroke="#111" stroke-width="2"/><circle cx="15" cy="14" r="4" fill="#fff" stroke="#111" stroke-width="2"/></svg><span>music.mp3</span></div>
+  <div class="icon" style="left:30px;top:400px"><svg class="g" viewBox="0 0 30 27"><rect x="2" y="4" width="26" height="18" fill="#3DDC97" stroke="#111" stroke-width="2"/><path d="M2 4l13 10 13-10" fill="none" stroke="#111" stroke-width="2"/></svg><span>Mail</span></div>
+  </div>
+
+  <section class="win" style="left:170px;top:40px;width:640px">
+    <div class="tb">welcome.exe<div class="b"><i></i><i></i><i></i></div></div>
+    <div class="wb"><h1>Hello,<br><em>world</em>!<span class="caret"></span></h1>
+      <p style="margin:14px 0 18px;max-width:480px">PIXEL POST builds websites, apps and brands with the charm of the early web and the speed of today.</p>
+      <a class="btn" href="#">▶ View work</a> <a class="btn" href="#">✉ Say hi</a></div>
+  </section>
+
+  <section class="win player" style="left:880px;top:70px">
+    <div class="tb">music.mp3<div class="b"><i></i><i></i></div></div>
+    <div class="scr"><span>NOW PLAYING — Dial-Up Dreams (studio mix) ♫</span></div>
+    <div class="eq" id="eq"></div>
+    <div class="ctrls"><span class="btn">⏮</span><span class="btn">▶</span><span class="btn">⏸</span><span class="btn">⏭</span></div>
+  </section>
+
+  <div class="stk" style="left:960px;top:330px">NEW! ✦</div>
+
+  <section class="win" style="left:520px;top:450px;width:620px">
+    <div class="tb">C:\Projects<div class="b"><i></i><i></i><i></i></div></div>
+    <div class="wb"><div class="folder">
+      <div class="f"><div class="ph" data-img></div>coffee_brand.jpg</div>
+      <div class="f"><div class="ph b2" data-img></div>fitness_app.png</div>
+      <div class="f"><div class="ph b3" data-img></div>hotel_site.gif</div>
+      <div class="f"><div class="ph b2" data-img></div>music_label.jpg</div>
+      <div class="f"><div class="ph b3" data-img></div>bakery_menu.png</div>
+      <div class="f"><div class="ph" data-img></div>gallery_web.gif</div>
+    </div></div>
+  </section>
+
+  <section class="win" style="left:150px;top:640px;width:330px">
+    <div class="tb">about.txt<div class="b"><i></i><i></i></div></div>
+    <div class="wb"><p><b>PIXEL POST</b> is a tiny studio of designers and developers.</p><br><p>We make things that load fast, look loud and feel friendly. Best viewed on any screen, at any resolution.</p><br><a class="btn" href="#">Read more</a></div>
+  </section>
+
+  <section class="win" style="left:250px;top:1080px;width:520px">
+    <div class="tb">guestbook.htm<div class="b"><i></i><i></i><i></i></div></div>
+    <div class="wb"><ul class="guest">
+      <li><b>sara_k:</b> "Our new site feels like magic. 10/10 would dial-up again."</li>
+      <li><b>omar.dev:</b> "Fast, fun and on time. Rare combo!"</li>
+      <li><b>cafe_luna:</b> "Bookings doubled after launch ☕"</li>
+    </ul><br><a class="btn" href="#">✎ Sign guestbook</a></div>
+  </section>
+
+  <section class="win" style="left:840px;top:1000px;width:420px">
+    <div class="tb">Mail — New message<div class="b"><i></i><i></i></div></div>
+    <div class="wb"><p><b>To:</b> hello@pixelpost.studio</p><p><b>Subject:</b> Let's build something</p><hr style="margin:10px 0"><p>Tell us about your idea and we'll reply within a day.</p><br><a class="btn" href="#">Send ➤</a></div>
+  </section>
+
+  <div class="stk" style="left:620px;top:1450px;background:#3DDC97">Thanks for visiting!</div>
+</main>
+<div class="task"><span class="btn start">▣ Start</span><span class="btn">welcome.exe</span><span class="btn">C:\Projects</span><span class="clock" id="clock">12:00</span></div>
+
+<script>
+// equaliser
+const eq=document.getElementById("eq");for(let i=0;i<18;i++){const b=document.createElement("i");b.style.animationDelay=(Math.random()*.6).toFixed(2)+"s";b.style.animationDuration=(.35+Math.random()*.5).toFixed(2)+"s";eq.appendChild(b)}
+// clock
+setInterval(()=>{const d=new Date();document.getElementById("clock").textContent=d.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})},1000);
+// windows pop in as you scroll
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll(".win").forEach((w,i)=>{w.style.transitionDelay=(i%3)*120+"ms";io.observe(w)});
+// draggable windows (desktop / iPad landscape)
+let z=10;document.querySelectorAll(".win").forEach(w=>{const t=w.querySelector(".tb");
+ w.addEventListener("pointerdown",()=>w.style.zIndex=++z);
+ t.addEventListener("pointerdown",e=>{if(innerWidth<1000)return;const sx=e.clientX-w.offsetLeft,sy=e.clientY-w.offsetTop;w.classList.add("drag");t.setPointerCapture(e.pointerId);
+  const mv=ev=>{w.style.left=ev.clientX-sx+"px";w.style.top=ev.clientY-sy+"px"};
+  const up=()=>{w.classList.remove("drag");t.removeEventListener("pointermove",mv);t.removeEventListener("pointerup",up)};
+  t.addEventListener("pointermove",mv);t.addEventListener("pointerup",up)})});
+</script>
+<script src="editor.js"></script>
+</body></html>

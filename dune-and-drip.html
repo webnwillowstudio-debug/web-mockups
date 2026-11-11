@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" data-vars="--sand,--paper,--teal,--terra,--lime,--plum,--pink">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F3E3C3">
+<title>Dune & Drip — Sunset Sessions, Karak & Cold Brew</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sand:#F3E3C3; --paper:#FFF8EA; --teal:#0E5E5A; --teal2:#137C76; --terra:#E2572B;
+  --lime:#D4F24A; --plum:#3A1E4D; --pink:#F7A8C4; --ink:#1B1420;
+  --disp:'Bricolage Grotesque', 'Arial Black', sans-serif; --mono:'Space Mono', ui-monospace, monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scrollbar-width:none}html::-webkit-scrollbar{display:none}
+body{background:var(--plum);font-family:var(--disp);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.16;mix-blend-mode:overlay;
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:inherit;text-decoration:none}
+.site{width:min(1360px,calc(100% - clamp(20px,4vw,72px)));margin:clamp(14px,2.5vw,36px) auto;border-radius:30px;overflow:hidden;background:var(--sand);position:relative;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.edge{position:absolute;z-index:20;pointer-events:none}
+
+/* NAV */
+nav{position:absolute;top:0;left:0;right:0;z-index:30;display:flex;justify-content:space-between;align-items:center;padding:22px clamp(20px,3vw,40px)}
+.logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:17px;letter-spacing:-.3px;cursor:pointer;user-select:none;-webkit-user-select:none}
+.logo svg{width:28px;height:28px}
+.menu{display:flex;gap:6px;background:var(--paper);border-radius:99px;padding:5px}
+.menu a{font-family:var(--mono);font-size:11px;font-weight:700;text-transform:uppercase;padding:7px 12px;border-radius:99px;transition:.25s}
+.menu a:hover{background:var(--ink);color:var(--lime)}
+
+/* HERO */
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:min(86vh,760px)}
+.hero-l{padding:clamp(90px,10vw,130px) clamp(20px,3.4vw,48px) clamp(26px,3vw,44px);display:flex;flex-direction:column;justify-content:space-between;position:relative}
+h1{font-weight:800;text-transform:uppercase;font-size:clamp(40px,5.6vw,86px);line-height:.95;letter-spacing:-2px}
+h1 .ln{display:block;opacity:0;transform:translateY(50px) rotate(3deg);animation:lin .9s cubic-bezier(.2,1.3,.3,1) forwards}
+h1 .ln:nth-child(2){animation-delay:.12s}h1 .ln:nth-child(3){animation-delay:.24s}h1 .ln:nth-child(4){animation-delay:.36s}
+@keyframes lin{to{opacity:1;transform:none}}
+.hl{display:inline-block;padding:.02em .16em .06em;border-radius:.16em;margin:.05em 0}
+.hl-terra{background:var(--terra);color:var(--paper);transform:rotate(-1.5deg)}
+.hl-lime{background:var(--lime);color:var(--teal);transform:rotate(1deg)}
+.hl-teal{background:var(--teal);color:var(--sand);transform:rotate(-.8deg)}
+.hero-l p{font-family:var(--mono);font-size:clamp(12px,1vw,14px);line-height:1.6;max-width:360px;margin-top:28px}
+.hero-l .cta{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.btn{font-family:var(--mono);font-weight:700;font-size:12px;text-transform:uppercase;padding:13px 20px;border-radius:99px;background:var(--ink);color:var(--lime);display:inline-flex;gap:8px;transition:transform .2s}
+.btn:hover{transform:translateY(-3px) rotate(-2deg)}
+.btn.o{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.hero-r{position:relative;overflow:hidden;background:#F59A52}
+.hero-r svg.scene{position:absolute;inset:0;width:100%;height:100%}
+
+/* stickers */
+.stk{position:absolute;z-index:25;font-family:var(--disp);font-weight:800;text-transform:uppercase;text-align:center;line-height:.95;font-size:13px}
+.oval{padding:13px 18px;border-radius:50%;background:var(--terra);color:var(--lime);box-shadow:0 0 0 3px var(--paper),0 0 0 5px var(--terra)}
+.arch{padding:16px 16px 8px;border-radius:60px 60px 10px 10px;background:var(--lime);color:var(--teal)}
+.flower{width:96px;height:96px;display:grid;place-items:center}
+.flower svg{position:absolute;inset:0}
+.flower span{position:relative;font-size:12px}
+.wob{animation:wob 4.5s ease-in-out infinite}@keyframes wob{0%,100%{transform:rotate(var(--r,-8deg))}50%{transform:rotate(calc(var(--r,-8deg)*-1)) scale(1.07)}}
+.flo{animation:flo 5s ease-in-out infinite}@keyframes flo{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-12px) rotate(var(--r,0deg))}}
+.spin{animation:spin 16s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+
+/* SESSIONS */
+.sessions{background:var(--teal);padding:clamp(40px,5vw,72px) clamp(20px,3.4vw,48px) clamp(60px,6vw,90px);position:relative}
+.sessions h2,.big{font-weight:800;text-transform:uppercase;letter-spacing:-1.5px;line-height:.95}
+.sessions h2{color:var(--sand);font-size:clamp(34px,4vw,60px);margin-bottom:clamp(30px,4vw,50px);display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px}
+.sessions h2 small{font-family:var(--mono);font-size:12px;letter-spacing:0;font-weight:400;max-width:300px;text-transform:none;line-height:1.5}
+.tags{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.4vw,34px)}
+.tag{background:var(--paper);border-radius:22px 22px 22px 22px;position:relative;padding:12px 12px 18px;transition:transform .4s cubic-bezier(.2,1.2,.3,1)}
+.tag:nth-child(1){--rr:-2.5deg}.tag:nth-child(2){--rr:1.5deg;margin-top:22px}.tag:nth-child(3){--rr:-1deg}
+.tag:hover{transform:rotate(0) translateY(-10px)!important}
+.tag::before{content:"";position:absolute;top:-14px;left:50%;width:30px;height:30px;margin-left:-15px;border-radius:50%;background:var(--teal);box-shadow:inset 0 0 0 5px var(--paper)}
+.tag .pic{border-radius:14px;overflow:hidden;aspect-ratio:16/10;position:relative}
+.tag .pic svg{width:100%;height:100%;display:block}
+.tag h3{font-weight:800;font-size:clamp(18px,1.7vw,24px);text-transform:uppercase;margin:16px 8px 10px;letter-spacing:-.5px}
+.r{display:flex;gap:8px;align-items:baseline;font-family:var(--mono);font-size:11.5px;padding:5px 8px}
+.r b{font-weight:400;color:#9a8f86;text-transform:uppercase;font-size:10px}
+.r::before{content:"";order:2;flex:1;border-bottom:1px dashed #cdbfae}
+.r b{order:1}.r span{order:3;text-align:right;font-weight:700}
+.pill{display:inline-block;background:var(--lime);color:var(--teal);border-radius:99px;padding:1px 7px;font-size:9px;margin-left:5px;vertical-align:1px}
+.qr{display:flex;gap:12px;align-items:center;margin:14px 8px 14px;padding-top:14px;border-top:2px dotted var(--ink)}
+.qr canvas{width:62px;height:62px;image-rendering:pixelated;flex:none}
+.qr div{font-family:var(--mono);font-size:10px;line-height:1.5;text-transform:uppercase}
+.qr div strong{display:block;font-family:var(--disp);font-size:20px;letter-spacing:-.5px}
+.tag .btn{width:calc(100% - 16px);margin:0 8px;justify-content:center;background:var(--terra);color:var(--paper)}
+
+/* MOSAIC */
+.mosaic{display:grid;grid-template-columns:1.1fr .8fr 1.2fr .9fr 1fr;height:clamp(200px,24vw,330px);position:relative;background:var(--sand)}
+.mosaic>div{position:relative;overflow:hidden}
+.mosaic>div:nth-child(2){margin-top:22%}.mosaic>div:nth-child(4){margin-bottom:20%}
+.mosaic svg{width:100%;height:100%;display:block}
+
+/* FINALE */
+.finale{position:relative;padding:clamp(50px,6vw,90px) clamp(20px,3.4vw,48px) 0;overflow:hidden}
+.big{font-size:clamp(70px,13.5vw,210px);color:var(--terra);text-align:center;letter-spacing:-.04em;line-height:.85;position:relative;z-index:3}
+.big .w{display:inline-block}
+.tiny{font-family:var(--mono);font-size:10px;text-transform:uppercase;text-align:center;margin:12px 0 0}
+.strip{display:grid;grid-template-columns:1.2fr 1fr 1.1fr;gap:14px;margin-top:-2.4vw;position:relative;z-index:2}
+.strip>div{border-radius:18px 18px 0 0;overflow:hidden;height:clamp(180px,22vw,320px);transform:rotate(var(--rr));transform-origin:bottom}
+.strip svg{width:100%;height:100%;display:block}
+footer{background:var(--ink);color:var(--sand);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:22px clamp(20px,3.4vw,48px);font-family:var(--mono);font-size:11px;text-transform:uppercase}
+footer span:first-child{color:var(--lime)}
+
+/* frame label like a case study */
+.label{display:flex;justify-content:space-between;color:var(--sand);font-family:var(--mono);font-size:11px;text-transform:uppercase;width:min(1360px,calc(100% - clamp(20px,4vw,72px)));margin:22px auto 0;opacity:.8}
+.label.b{margin:0 auto 26px}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(46px) rotate(var(--rr,0deg));transition:opacity .8s, transform 1s cubic-bezier(.2,1.2,.3,1)}
+.rv.in{opacity:1;transform:translateY(0) rotate(var(--rr,0deg))}
+.pop{animation:pop .7s cubic-bezier(.2,1.7,.4,1) both}@keyframes pop{from{transform:scale(.2) rotate(-20deg);opacity:0}}
+
+@media (max-width:1000px){
+  .hero{grid-template-columns:1fr}
+  .hero-r{aspect-ratio:4/3.2}
+  .hero-l{padding-top:100px}
+  .tags{grid-template-columns:1fr 1fr}
+  .tag:nth-child(3){grid-column:span 2;width:60%;justify-self:center;margin-top:10px}
+  .mosaic{grid-template-columns:1fr 1fr 1fr}.mosaic>div:nth-child(n+4){display:none}
+}
+@media (max-width:620px){
+  .menu{display:none}.tags{grid-template-columns:1fr}.tag:nth-child(3){grid-column:auto;width:auto}
+  .strip{grid-template-columns:1fr 1fr}.strip>div:nth-child(3){display:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv,h1 .ln{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div class="label"><span>Concept 2026</span><span>Web design · Brand identity · UX/UI</span><span>by webnwillow</span></div>
+
+<div class="site">
+  <nav>
+    <div class="logo" id="logo">
+      <svg viewBox="0 0 28 28"><circle cx="14" cy="14" r="13" fill="#1B1420"/><path d="M4 18q5-6 10-1t10-1" stroke="#D4F24A" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="14" cy="10" r="4" fill="#E2572B"/></svg>
+      DUNE&amp;DRIP
+    </div>
+    <div class="menu"><a href="#sessions">Sessions</a><a href="#vibe">Menu</a><a href="#vibe">Merch</a><a href="#visit">Visit</a></div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-l">
+      <h1>
+        <span class="ln">Sunset beats</span>
+        <span class="ln">with <span class="hl hl-terra">local selectors</span></span>
+        <span class="ln"><span class="hl hl-lime">karak &amp; cold brew</span></span>
+        <span class="ln"><span class="hl hl-teal">desert mocktails</span></span>
+      </h1>
+      <div>
+        <p>DUNE&amp;DRIP is an open-air café club in Dubai where golden-hour music, slow coffee and alcohol-free drinks bring people together.</p>
+        <div class="cta"><a href="#sessions" class="btn">See sessions →</a><a href="#visit" class="btn o">Find us</a></div>
+      </div>
+      <div class="stk oval wob" style="right:8%;top:16%;--r:10deg">Golden<br>hour</div>
+    </div>
+    <div class="hero-r" id="heroScene"></div>
+  </header>
+
+  <section class="sessions" id="sessions">
+    <h2 class="rv">This month's sessions <small>Three evenings, three moods. Doors open before sunset — come early for the best spot on the sand.</small></h2>
+    <div class="tags" id="tags"></div>
+    <div class="stk flower flo" style="left:-18px;bottom:30px;--r:-10deg"><svg viewBox="0 0 100 100"><g fill="#F7A8C4"><circle cx="50" cy="22" r="22"/><circle cx="78" cy="50" r="22"/><circle cx="50" cy="78" r="22"/><circle cx="22" cy="50" r="22"/></g><circle cx="50" cy="50" r="18" fill="#D4F24A"/></svg><span>Slow<br>sips</span></div>
+    <div class="stk arch wob" style="right:22px;top:24px;--r:7deg">Sand in<br>your shoes</div>
+  </section>
+
+  <div class="mosaic" id="vibe"></div>
+
+  <section class="finale" id="visit">
+    <div class="big" id="big"><span class="w">Catch</span> <span class="w">the</span> <span class="w">sunset</span></div>
+    <div class="tiny">Al Qudra road · Fri–Sun · 4PM till late</div>
+    <div class="strip" id="strip"></div>
+    <div class="stk oval wob" style="left:5%;top:16%;--r:-12deg;background:var(--teal);color:var(--lime);box-shadow:0 0 0 3px var(--paper),0 0 0 5px var(--teal)">Come<br>as you are</div>
+    <div class="stk arch flo" style="right:6%;top:12%;--r:8deg;background:var(--pink);color:var(--plum)">See you<br>at dusk</div>
+  </section>
+  <footer><span>DUNE&amp;DRIP — Concept by webnwillow</span><span>Instagram · Visit · Sessions</span><span>Dubai ✦ 2026</span></footer>
+</div>
+
+<div class="label b"><span>Concept 2026</span><span>Web design · Brand identity · UX/UI</span><span>by webnwillow</span></div>
+
+<script>
+// ---------- illustrated scene generator (no photos needed) ----------
+function rng(seed){return()=>((seed=Math.imul(seed^seed>>>15,seed|1)+0x6D2B79F5|0)>>>0)%1e6/1e6}
+const PAL=[
+ {sky1:"#F59A52",sky2:"#F7C77A",sun:"#FFE7A3",dune1:"#E2572B",dune2:"#B8412A",crowd:"#3A1E4D"},
+ {sky1:"#3A1E4D",sky2:"#C0567A",sun:"#F7A8C4",dune1:"#7B2E57",dune2:"#4C1F45",crowd:"#1B1420"},
+ {sky1:"#137C76",sky2:"#8FD3B8",sun:"#D4F24A",dune1:"#0E5E5A",dune2:"#0A4542",crowd:"#1B1420"},
+ {sky1:"#E2572B",sky2:"#F7A8C4",sun:"#FFF8EA",dune1:"#3A1E4D",dune2:"#24122F",crowd:"#1B1420"},
+ {sky1:"#D4F24A",sky2:"#F3E3C3",sun:"#E2572B",dune1:"#137C76",dune2:"#0E5E5A",crowd:"#1B1420"}
+];
+function scene({w=800,h=600,p=0,seed=1,crowd=true,dj=false,cup=false,deck=false,lights=true}){
+  const c=PAL[p%PAL.length],R=rng(seed),id="g"+seed+"_"+p;let s=`<svg class="scene" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${c.sky1}"/><stop offset="1" stop-color="${c.sky2}"/></linearGradient></defs>
+  <rect width="${w}" height="${h}" fill="url(#${id})"/>`;
+  const sx=w*(.25+R()*.5),sy=h*.42,sr=Math.min(w,h)*.2;
+  s+=`<g style="transform-origin:${sx}px ${sy}px" class="spin">${Array.from({length:12},(_,i)=>{const a=i/12*Math.PI*2;return `<line x1="${sx+Math.cos(a)*sr*1.25}" y1="${sy+Math.sin(a)*sr*1.25}" x2="${sx+Math.cos(a)*sr*1.6}" y2="${sy+Math.sin(a)*sr*1.6}" stroke="${c.sun}" stroke-width="${sr*.08}" stroke-linecap="round" opacity=".8"/>`}).join("")}</g>`;
+  s+=`<circle cx="${sx}" cy="${sy}" r="${sr}" fill="${c.sun}"/>`;
+  s+=`<path d="M0 ${h*.62} Q ${w*.3} ${h*.48} ${w*.55} ${h*.62} T ${w} ${h*.58} V ${h} H0Z" fill="${c.dune1}"/>`;
+  s+=`<path d="M0 ${h*.74} Q ${w*.4} ${h*.62} ${w*.7} ${h*.74} T ${w} ${h*.72} V ${h} H0Z" fill="${c.dune2}"/>`;
+  if(lights){let path=`M0 ${h*.12} Q ${w/2} ${h*.3} ${w} ${h*.1}`;s+=`<path d="${path}" stroke="${c.crowd}" stroke-width="2" fill="none" opacity=".6"/>`;
+    for(let i=1;i<14;i++){const t=i/14,x=w*t,y=(1-t)*(1-t)*h*.12+2*(1-t)*t*h*.3+t*t*h*.1;s+=`<circle cx="${x}" cy="${y+8}" r="${Math.max(4,w*.008)}" fill="#FFF3B0" class="tw" style="animation-delay:${(R()*2).toFixed(2)}s"/>`}}
+  if(dj){const bx=w*.5,by=h*.7;s+=`<g><rect x="${bx-w*.16}" y="${by}" width="${w*.32}" height="${h*.12}" rx="10" fill="${c.crowd}"/><rect x="${bx-w*.13}" y="${by+h*.025}" width="${w*.09}" height="${w*.09*.25}" rx="4" fill="${c.sun}"/><rect x="${bx+w*.04}" y="${by+h*.025}" width="${w*.09}" height="${w*.09*.25}" rx="4" fill="${c.sun}"/>
+    <g class="bob" style="transform-origin:${bx}px ${by}px"><circle cx="${bx}" cy="${by-h*.15}" r="${h*.05}" fill="${c.crowd}"/><path d="M${bx-h*.09} ${by} Q ${bx} ${by-h*.16} ${bx+h*.09} ${by}Z" fill="${c.crowd}"/><path d="M${bx-h*.055} ${by-h*.17} a ${h*.058} ${h*.058} 0 0 1 ${h*.11} 0" stroke="${PAL[(p+2)%5].sun}" stroke-width="${h*.014}" fill="none"/></g></g>`}
+  if(crowd){const n=Math.round(w/38);for(let i=0;i<n;i++){const x=(i+R()*.6)/n*w,hh=h*(.15+R()*.1),y=h-hh*.35,hr=hh*.18,up=R()>.55;
+    s+=`<g class="${up?'jump':''}" style="animation-delay:${(R()*1.2).toFixed(2)}s">`;
+    if(up){s+=`<path d="M${x-hr*.6} ${y-hh*.4} L ${x-hr*1.6} ${y-hh*1.1} M${x+hr*.6} ${y-hh*.4} L ${x+hr*1.4} ${y-hh*1.15}" stroke="${c.crowd}" stroke-width="${hr*.5}" stroke-linecap="round"/>`}
+    s+=`<circle cx="${x}" cy="${y-hh*.62}" r="${hr}" fill="${c.crowd}"/><rect x="${x-hr*1.3}" y="${y-hh*.45}" width="${hr*2.6}" height="${hh}" rx="${hr}" fill="${c.crowd}"/></g>`}}
+  if(cup){const cx=w*.5,cy=h*.55,cw=w*.22;s+=`<g class="flo"><path d="M${cx-cw/2} ${cy-cw*.6} h${cw} l-${cw*.12} ${cw*1.2} h-${cw*.76}z" fill="${PAL[(p+3)%5].sky2}" stroke="#1B1420" stroke-width="6" stroke-linejoin="round"/><rect x="${cx-cw*.6}" y="${cy-cw*.78}" width="${cw*1.2}" height="${cw*.2}" rx="8" fill="#FFF8EA" stroke="#1B1420" stroke-width="6"/><rect x="${cx-cw*.42}" y="${cy-cw*.15}" width="${cw*.84}" height="${cw*.3}" fill="#1B1420"/><text x="${cx}" y="${cy+cw*.06}" text-anchor="middle" font-family="Bricolage Grotesque,Arial Black" font-weight="800" font-size="${cw*.15}" fill="#D4F24A">D&amp;D</text><path d="M${cx+cw*.1} ${cy-cw*.78} l${cw*.15} -${cw*.45}" stroke="#E2572B" stroke-width="10" stroke-linecap="round"/></g>`}
+  if(deck){const cx=w*.5,cy=h*.56,r=Math.min(w,h)*.26;s+=`<rect x="${cx-r*1.5}" y="${cy-r*1.15}" width="${r*3}" height="${r*2.3}" rx="24" fill="#1B1420"/><g class="spin" style="transform-origin:${cx-r*.35}px ${cy}px;animation-duration:3s"><circle cx="${cx-r*.35}" cy="${cy}" r="${r*.9}" fill="#2a2030"/><circle cx="${cx-r*.35}" cy="${cy}" r="${r*.6}" fill="none" stroke="#3d3044" stroke-width="3"/><circle cx="${cx-r*.35}" cy="${cy}" r="${r*.3}" fill="${c.sun}"/><rect x="${cx-r*.37}" y="${cy-r*.3}" width="6" height="${r*.12}" fill="#1B1420"/></g><rect x="${cx+r*.75}" y="${cy-r*.8}" width="${r*.18}" height="${r*1.6}" rx="8" fill="#3d3044"/><rect x="${cx+r*.7}" y="${cy-r*.1}" width="${r*.28}" height="${r*.22}" rx="6" fill="${PAL[(p+1)%5].sky2}"/>`}
+  return s+"</svg>"}
+
+// keyframes for scene bits
+const st=document.createElement("style");st.textContent=`.tw{animation:tw 1.6s ease-in-out infinite alternate}@keyframes tw{to{opacity:.25}}
+.jump{animation:jump .9s ease-in-out infinite alternate}@keyframes jump{to{transform:translateY(-10px)}}
+.sway{animation:sway 3s ease-in-out infinite alternate}@keyframes sway{from{transform:rotate(-4deg)}to{transform:rotate(4deg)}}
+.laser{animation:laser 2.2s ease-in-out infinite alternate}@keyframes laser{from{transform:rotate(-12deg)}to{transform:rotate(12deg)}}
+.bob{animation:bob .45s ease-in-out infinite alternate}@keyframes bob{to{transform:translateY(6px) rotate(2deg)}}`;document.head.appendChild(st);
+
+if(!document.getElementById("heroScene").innerHTML.trim())document.getElementById("heroScene").innerHTML=scene({w:800,h:900,p:0,seed:7,dj:true})+
+ `<div class="stk arch flo" style="left:8%;bottom:8%;--r:-6deg;background:var(--paper);color:var(--terra)">Alcohol<br>free</div>`;
+
+
+// ---- unique art per session ----
+function crowdRow(w,h,col,seed,base=1){const R=rng(seed);let s="";const n=Math.round(w/34);for(let i=0;i<n;i++){const x=(i+R()*.6)/n*w,hh=h*(.16+R()*.08),y=h*base-hh*.3,hr=hh*.18,up=R()>.5;
+ s+=`<g class="${up?'jump':''}" style="animation-delay:${(R()*1.2).toFixed(2)}s">`+(up?`<path d="M${x-hr*.5} ${y-hh*.4} L ${x-hr*1.5} ${y-hh*1.1} M${x+hr*.5} ${y-hh*.4} L ${x+hr*1.3} ${y-hh*1.15}" stroke="${col}" stroke-width="${hr*.5}" stroke-linecap="round"/>`:"")+
+ `<circle cx="${x}" cy="${y-hh*.62}" r="${hr}" fill="${col}"/><rect x="${x-hr*1.3}" y="${y-hh*.45}" width="${hr*2.6}" height="${hh}" rx="${hr}" fill="${col}"/></g>`}return s}
+
+// 1) Friday Fade: Local Sounds — dusk majlis with lanterns, drum + rug
+function artLocal(){const w=640,h=400;let s=`<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<defs><linearGradient id="la" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0E5E5A"/><stop offset="1" stop-color="#8FD3B8"/></linearGradient></defs>
+<rect width="${w}" height="${h}" fill="url(#la)"/>`;
+ const R=rng(5);for(let i=0;i<30;i++)s+=`<circle cx="${R()*w}" cy="${R()*h*.45}" r="${1+R()*2}" fill="#FFF8EA" class="tw" style="animation-delay:${(R()*2).toFixed(2)}s"/>`;
+ s+=`<circle cx="520" cy="80" r="36" fill="#D4F24A"/><circle cx="536" cy="70" r="32" fill="#137C76"/>`;
+ // tent
+ s+=`<path d="M60 300 L320 120 L580 300Z" fill="#E2572B"/><path d="M320 120 L250 300 H390Z" fill="#B8412A"/>
+ <path d="M60 300 Q120 280 190 300 Q255 280 320 300 Q385 280 450 300 Q515 280 580 300" stroke="#FFF8EA" stroke-width="6" fill="none"/>
+ <rect x="0" y="300" width="${w}" height="100" fill="#0A4542"/>`;
+ // rug pattern
+ s+=`<path d="M170 330 h300 l30 50 h-360z" fill="#F7A8C4"/>`;for(let i=0;i<9;i++)s+=`<path d="M${190+i*32} 340 l12 12 -12 12 -12 -12z" fill="#3A1E4D"/>`;
+ // lanterns
+ [[140,170,"#D4F24A"],[230,140,"#FFE7A3"],[410,140,"#FFE7A3"],[500,170,"#D4F24A"]].forEach(([x,y,c],i)=>{s+=`<line x1="${x}" y1="0" x2="${x}" y2="${y-24}" stroke="#1B1420" stroke-width="2"/>
+ <g class="sway" style="transform-origin:${x}px 0px;animation-delay:${i*.3}s"><circle cx="${x}" cy="${y}" r="34" fill="${c}" opacity=".25" class="tw"/><path d="M${x-12} ${y-20} h24 l6 20 -6 20 h-24 l-6 -20z" fill="${c}" stroke="#1B1420" stroke-width="3"/><rect x="${x-6}" y="${y-28}" width="12" height="8" fill="#1B1420"/></g>`});
+ // darbuka drum + player
+ s+=`<g class="bob" style="transform-origin:320px 330px"><circle cx="320" cy="232" r="22" fill="#1B1420"/><path d="M280 330 Q320 240 360 330Z" fill="#1B1420"/></g>
+ <path d="M345 290 h36 l-8 18 q-10 10 0 22 h-20 q10 -12 0 -22z" fill="#D4F24A" stroke="#1B1420" stroke-width="3"/>
+ <path d="M300 290 l-24 -14" stroke="#1B1420" stroke-width="7" stroke-linecap="round" class="bob"/>`;
+ // music notes
+ ["♪","♫","♪"].forEach((n,i)=>s+=`<text x="${380+i*45}" y="${230-i*30}" font-size="30" fill="#FFF8EA" class="flo" style="animation-delay:${i*.6}s">${n}</text>`);
+ return s+crowdRow(w,h,"#1B1420",11,1.16).replace(/<g class="jump"/g,'<g class=""')+"</svg>"}
+
+// 2) Golden Hour Grooves — palm deck, low sun, mocktails on the rail
+function artPalm(){const w=640,h=400;let s=`<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<defs><linearGradient id="pa" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F59A52"/><stop offset=".7" stop-color="#FFE7A3"/></linearGradient></defs>
+<rect width="${w}" height="${h}" fill="url(#pa)"/>
+<g class="spin" style="transform-origin:320px 250px;animation-duration:40s">${Array.from({length:16},(_,i)=>{const a=i/16*Math.PI*2;return `<path d="M320 250 L${320+Math.cos(a)*600} ${250+Math.sin(a)*600} L${320+Math.cos(a+.1)*600} ${250+Math.sin(a+.1)*600}Z" fill="#FFF8EA" opacity=".18"/>`}).join("")}</g>
+<circle cx="320" cy="250" r="95" fill="#E2572B"/><rect x="220" y="225" width="200" height="8" fill="#F59A52"/><rect x="220" y="248" width="200" height="10" fill="#F59A52"/><rect x="220" y="275" width="200" height="12" fill="#F59A52"/>
+<rect y="290" width="${w}" height="110" fill="#137C76"/>`;
+ for(let i=0;i<6;i++)s+=`<path d="M${40+i*110} ${305+i%2*10} q20 -6 40 0" stroke="#8FD3B8" stroke-width="4" fill="none" class="flo" style="animation-delay:${i*.4}s"/>`;
+ // palms
+ function palm(x,hgt,flip){const top=290-hgt,f=flip?-1:1;let p=`<path d="M${x} 330 Q${x+20*f} ${290-hgt/2} ${x+10*f} ${top}" stroke="#3A1E4D" stroke-width="14" fill="none" stroke-linecap="round"/><g class="sway" style="transform-origin:${x+10*f}px ${top}px">`;
+  [[-1,-.2],[-1,.5],[1,-.2],[1,.5],[0,-1]].forEach(([dx,dy])=>p+=`<path d="M${x+10*f} ${top} q${dx*50+ (dx===0?10:0)} ${dy*40-30} ${dx*110+(dx===0?20:0)} ${dy*60+20}" stroke="#3A1E4D" stroke-width="16" fill="none" stroke-linecap="round"/>`);
+  return p+`<circle cx="${x+10*f}" cy="${top+8}" r="10" fill="#3A1E4D"/></g>`}
+ s+=palm(70,200,false)+palm(585,170,true)+palm(510,110,true);
+ // deck + rail
+ s+=`<rect y="330" width="${w}" height="70" fill="#7B4A2E"/>`;for(let i=0;i<12;i++)s+=`<line x1="${i*58}" y1="330" x2="${i*58-20}" y2="400" stroke="#5E3722" stroke-width="3"/>`;
+ s+=`<rect y="322" width="${w}" height="12" rx="4" fill="#3A1E4D"/>`;
+ // mocktails
+ [[180,"#F7A8C4"],[250,"#D4F24A"],[400,"#E2572B"],[470,"#8FD3B8"]].forEach(([x,c],i)=>s+=`<g class="flo" style="animation-delay:${i*.5}s;--r:0deg"><path d="M${x-22} 262 h44 l-8 58 h-28z" fill="${c}" stroke="#1B1420" stroke-width="4" stroke-linejoin="round"/><rect x="${x-14}" y="274" width="12" height="12" rx="2" fill="#FFF8EA" opacity=".8"/><circle cx="${x+18}" cy="262" r="11" fill="#FFE36E" stroke="#1B1420" stroke-width="3"/><line x1="${x+4}" y1="262" x2="${x+16}" y2="232" stroke="#1B1420" stroke-width="5" stroke-linecap="round"/></g>`);
+ return s+"</svg>"}
+
+// 3) Halo (Beirut) — night stage, glowing halo ring, lasers, big crowd
+function artHalo(){const w=640,h=400;let s=`<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<defs><radialGradient id="hg" cx=".5" cy=".42" r=".7"><stop offset="0" stop-color="#C0567A"/><stop offset=".55" stop-color="#3A1E4D"/><stop offset="1" stop-color="#1B1420"/></radialGradient></defs>
+<rect width="${w}" height="${h}" fill="url(#hg)"/>`;
+ const R=rng(9);for(let i=0;i<40;i++)s+=`<circle cx="${R()*w}" cy="${R()*h*.6}" r="${.8+R()*1.8}" fill="#FFF8EA" class="tw" style="animation-delay:${(R()*2).toFixed(2)}s"/>`;
+ // lasers
+ const cols=["#D4F24A","#F7A8C4","#8FD3B8","#E2572B"];
+ for(let i=0;i<8;i++){const side=i<4?110:530,ang=(i%4)*14-20;s+=`<g class="laser" style="transform-origin:${side}px 300px;animation-delay:${i*.25}s"><line x1="${side}" y1="300" x2="${side+(i<4?1:-1)*(260+ang*4)}" y2="${-20}" stroke="${cols[i%4]}" stroke-width="3" opacity=".75"/></g>`}
+ // halo ring
+ s+=`<circle cx="320" cy="160" r="92" fill="none" stroke="#FFE7A3" stroke-width="26" opacity=".25" class="tw"/>
+ <circle cx="320" cy="160" r="92" fill="none" stroke="#FFE7A3" stroke-width="12"/>
+ <g class="spin" style="transform-origin:320px 160px;animation-duration:8s"><circle cx="412" cy="160" r="9" fill="#D4F24A"/><circle cx="228" cy="160" r="6" fill="#F7A8C4"/></g>
+ <text x="320" y="174" text-anchor="middle" font-family="Bricolage Grotesque, Arial Black" font-weight="800" font-size="42" fill="#FFF8EA" letter-spacing="4">HALO</text>`;
+ // stage + DJ
+ s+=`<rect x="190" y="270" width="260" height="40" rx="6" fill="#0d0a10"/><rect x="215" y="280" width="50" height="10" rx="3" fill="#D4F24A"/><rect x="375" y="280" width="50" height="10" rx="3" fill="#F7A8C4"/>
+ <g class="bob" style="transform-origin:320px 270px"><circle cx="320" cy="226" r="18" fill="#0d0a10"/><path d="M286 270 Q320 222 354 270Z" fill="#0d0a10"/><path d="M340 240 l40 -50" stroke="#0d0a10" stroke-width="10" stroke-linecap="round"/></g>
+ <rect x="0" y="300" width="${w}" height="100" fill="#120d16"/>`;
+ // speakers
+ [60,580].forEach(x=>s+=`<rect x="${x-34}" y="190" width="68" height="120" rx="8" fill="#0d0a10" stroke="#3A1E4D" stroke-width="3"/><circle cx="${x}" cy="225" r="16" fill="#2a2030" class="tw"/><circle cx="${x}" cy="275" r="22" fill="#2a2030"/>`);
+ return s+crowdRow(w,h,"#000",21,1.02)+"</svg>"}
+
+// tickets
+const S=[
+ {t:"Friday Fade: Local Sounds",d:"Nov 14",day:"Fri",time:"4:30 PM – 10:00 PM",spot:"The Main Dune",dj:"NOOR K (Dubai)",price:"Free",p:2,art:artLocal},
+ {t:"Golden Hour Grooves",d:"Nov 21",day:"Fri",time:"5:00 PM – 11:00 PM",spot:"Palm Deck (outdoor)",dj:"RAYAN + MILA",price:"Early: 45 AED · Door: 70",p:1,art:artPalm},
+ {t:"Dune&Drip Presents: Halo",d:"Nov 29",day:"Sat",time:"4:00 PM – late",spot:"The Main Dune",dj:"HALO (Beirut)",price:"Regular: 95 · VIP: 180 AED",p:3,art:artHalo}];
+if(!document.getElementById("tags").innerHTML.trim())document.getElementById("tags").innerHTML=S.map((x,i)=>`<article class="tag rv"><div class="pic">${x.art()}</div>
+ <h3>${x.t}</h3>
+ <div class="r"><b>Date</b><span>${x.d}<i class="pill">${x.day}</i></span></div>
+ <div class="r"><b>Time</b><span>${x.time}</span></div>
+ <div class="r"><b>Spot</b><span>${x.spot}</span></div>
+ <div class="r"><b>Selector</b><span>${x.dj}</span></div>
+ <div class="r"><b>Entry</b><span>${x.price}</span></div>
+ <div class="qr"><canvas width="21" height="21" data-seed="${i+3}"></canvas><div><strong>Nº 00${i+1}</strong>Scan at the gate<br>Doors before dusk</div></div>
+ <a href="#sessions" class="btn">Save my spot →</a></article>`).join("");
+document.querySelectorAll(".qr canvas").forEach(cv=>{const x=cv.getContext("2d"),R=rng(+cv.dataset.seed*99);x.fillStyle="#1B1420";
+  for(let i=0;i<21;i++)for(let j=0;j<21;j++)if(R()>.52)x.fillRect(i,j,1,1);
+  [[0,0],[14,0],[0,14]].forEach(([a,b])=>{x.clearRect(a,b,7,7);x.fillRect(a,b,7,7);x.clearRect(a+1,b+1,5,5);x.fillRect(a+2,b+2,3,3)})});
+
+// mosaic
+if(!document.getElementById("vibe").innerHTML.trim())document.getElementById("vibe").innerHTML=[
+ scene({w:500,h:500,p:3,seed:41}), scene({w:400,h:500,p:4,seed:42,crowd:false,cup:true,lights:false}),
+ scene({w:600,h:500,p:1,seed:43,dj:true}), scene({w:400,h:500,p:2,seed:44,crowd:false,deck:true,lights:false}),
+ scene({w:500,h:500,p:0,seed:45})].map(s=>`<div>${s}</div>`).join("")+
+ `<div class="stk oval wob" style="left:22%;top:58%;--r:-10deg;position:absolute">Pure<br>calm</div>
+  <div class="stk flower spin" style="left:66%;top:-30px;position:absolute;animation-duration:20s"><svg viewBox="0 0 100 100"><g fill="#D4F24A"><circle cx="50" cy="22" r="22"/><circle cx="78" cy="50" r="22"/><circle cx="50" cy="78" r="22"/><circle cx="22" cy="50" r="22"/></g><circle cx="50" cy="50" r="18" fill="#E2572B"/></svg></div>`;
+
+// finale strip
+if(!document.getElementById("strip").innerHTML.trim())document.getElementById("strip").innerHTML=[[-2.5,4,51],[1.5,1,52],[-1,2,53]].map(([r,p,s],i)=>`<div style="--rr:${r}deg">${scene({w:600,h:420,p,seed:s,dj:i===1})}</div>`).join("");
+
+// reveal
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll(".rv").forEach((el,i)=>{el.style.transitionDelay=(i%3)*120+"ms";io.observe(el)});
+const big=document.getElementById("big");
+new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)big.querySelectorAll(".w").forEach((w,i)=>{w.classList.remove("pop");void w.offsetWidth;w.style.animationDelay=i*.13+"s";w.classList.add("pop")})}),{threshold:.4}).observe(big);
+
+// hero parallax
+const hs=document.querySelector("#heroScene svg");
+addEventListener("mousemove",e=>{hs.style.transform=`scale(1.06) translate(${(e.clientX/innerWidth-.5)*-14}px,${(e.clientY/innerHeight-.5)*-10}px)`});
+
+</script>
+<script src="editor.js"></script>
+</body>
+</html>
